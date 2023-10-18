@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="./assets/css/<?= $keres['fajl'] ?>.css" type="text/css"><?php } ?>
 </head>
 
-<body class="is-preload">
+<body>
     <header>
         <section>
             <div class="inner">
@@ -52,7 +52,7 @@
     <footer id="footer" class="wrapper style1-alt">
         <div class="inner">
             <ul class="menu">
-                <li>&copy; Cuki. All rights reserved.</li>
+                <li>&copy; Édes Élmény Cukrászda. All rights reserved.</li>
             </ul>
         </div>
     </footer>

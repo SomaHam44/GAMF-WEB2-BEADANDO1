@@ -1,15 +1,15 @@
 <?php
 $ablakcim = array(
-	'cim' => 'Cuki',
+	'cim' => 'Édes Élmény Cukrászda',
 );
 
 $fejlec = array(
-	'cim' => '  Cuki',
+	'cim' => 'Édes Élmény Cukrászda',
 );
 
 $lablec = array(
 	'copyright' => 'Copyright ' . date("Y") . '.',
-	'oldal' => 'Cuki'
+	'oldal' => 'Édes Élmény Cukrászda'
 );
 
 $dbname='root';
@@ -17,6 +17,7 @@ $dbjelszo='';
 
 $oldalak = array(	
 	'/' => array('fajl' => 'kezdolap', 'szoveg' => 'Kezdőlap', 'menun' => array(1, 1)),
+    'hirek' => array('fajl' => 'hirek', 'szoveg' => 'Hírek', 'menun' => array(0, 1)),
 	'belepes' => array('fajl' => 'belepes', 'szoveg' => 'Belépés/Regisztráció', 'menun' => array(1, 0)),
 	'kilepes' => array('fajl' => 'kilepes', 'szoveg' => 'Kilépés', 'menun' => array(0, 1)),
 	'belep' => array('fajl' => 'belep', 'szoveg' => '', 'menun' => array(0, 0)),	
