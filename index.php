@@ -1,15 +1,12 @@
 <?php
-	include('./includes/config.inc.php');
-	if (isset($_GET['oldal'])) {
-		$oldal = $_GET['oldal'];
-		if (isset($oldalak[$oldal]) && file_exists("./templates/pages/{$oldalak[$oldal]['fajl']}.tpl.php")) {
-			$keres = $oldalak[$oldal];
-		}
-		else { 
-			$keres = $hiba_oldal;
-			header("HTTP/1.0 404 Not Found");
-		}
-	}
-	else $keres = $oldalak['/'];
-	include('./templates/index.tpl.php'); 
+
+//alkalmazás gyökér könyvtára a szerveren
+define('SERVER_ROOT', $_SERVER['DOCUMENT_ROOT'].'/web2/');
+
+//URL cím az alkalmazás gyökeréhez
+define('SITE_ROOT', 'http://localhost/web2/');
+
+// a router.php vezérlõ betöltése
+require_once(SERVER_ROOT . 'controllers/' . 'router.php');
+
 ?>
