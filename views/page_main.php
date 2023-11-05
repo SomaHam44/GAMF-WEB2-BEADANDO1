@@ -9,7 +9,7 @@
     <body>
         <header>
             <div id="user"><em>
-            <?php if(isset($_SESSION['login'])) { ?>Bejelentkezett: <strong><?= $_SESSION['userlastname']." ".$_SESSION['userfirstname']." (".$_SESSION['login'].")" ?></strong><?php } ?>
+            <?php if(isset($_SESSION['login'])&&$_SESSION['userid']>0) { ?>Bejelentkezett: <strong><?= $_SESSION['userlastname']." ".$_SESSION['userfirstname']." (".$_SESSION['login'].")" ?></strong><?php } ?>
             </em></div>
             <h1 class="header">Édes Élmény Cukrászda</h1>
         </header>
