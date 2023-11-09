@@ -19,4 +19,3 @@ $tomb=$viewData['lista'];
 </tr>               
 <?php } ?>
 </table>
-

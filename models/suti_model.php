@@ -15,7 +15,7 @@ class Suti
         $this->tipus = $tipus;
         $this->dijazott = $dijazott;
         $this->egysegar =$egysegar;
-        this->egyseg =$egyseg;
+        $this->egyseg =$egyseg;
     }
 
 
@@ -39,23 +39,23 @@ class Suti
         return $this->dijazott;
     }
 
-    public funtion setNev($nev)
+    public function setNev($nev)
     {
         $this->nev=$nev;
     }
-    public funtion setTipus($tipus)
+    public function setTipus($tipus)
     {
         $this->tipus=$tipus;
     }
-    public funtion setDijazott($dijazott)
+    public function setDijazott($dijazott)
     {
         $this->dijazott=$dijazott;
     }
-    public funtion setEgysegar($egysegar)
+    public function setEgysegar($egysegar)
     {
         $this->egysegar=$egysegar;
     }
-    public funtion setEgyseg($egyseg)
+    public function setEgyseg($egyseg)
     {
         $this->egyseg=$egyseg;
     }
