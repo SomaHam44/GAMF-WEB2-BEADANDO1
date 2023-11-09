@@ -78,3 +78,12 @@ td {
     background-color:bisque;
     border-top: 3px solid #FFFFFF;
 }
+label {
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+input {
+    padding: 5px 2px;
+    margin: 10px 5px;
+}
