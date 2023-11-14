@@ -37,16 +37,18 @@
         ?>
         </pre>
     </table>
-    
+    <div id="chart" style="width:auto; height:300px;"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        var jtomb= <?php echo $jtomb ?>;
-        var tomb=JSON.parse(jtomb);              
+    <script type="text/javascript"> 
+        var jtomb = <?php echo $jtomb ?>;
+        var tomb = JSON.stringify(jtomb);
+        //console.log(tomb);      
         google.charts.load('visualization', { packages: ['corechart'] });
         google.charts.setOnLoadCallback(drawLineChart);
         function drawLineChart() {
-            function (data) {
+            function drawChart (data) {
                 var arrSales = [['Nap', 'Deviza1. (Ft)' , 'Deviza2. (Ft)']];
                 $.each(tomb, function (index, value) {
                     arrSales.push([value.date, value.deviza1, value.deviza2]);
@@ -59,12 +61,14 @@
                 var figures = google.visualization.arrayToDataTable(arrSales)
                 var chart = new google.visualization.LineChart(document.getElementById('chart'));
                 chart.draw(figures, options); 
-            },            
-        
+            };
+                 
         };
+        
     
     </script>
     <div id="chart" style="width:auto; height:300px;"></div>
+    
 </body>      
            
 
