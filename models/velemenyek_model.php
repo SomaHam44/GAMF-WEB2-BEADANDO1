@@ -1,15 +1,15 @@
 <?php
 
-class Hirek_Model
+class Velemenyek_Model
 {
     public function get_data()
     {
         $retData['eredmeny'] = "";
 		$retData['uzenet']="";
-		$retData['lista']=array();
+		$retData['lista'] = array();
 		try {
 			$connection = Database::getConnection();
-			$sql = "SELECT hir.idopont, hir.tartalom from hir";
+			$sql = "SELECT velemeny.idopoont, velemeny.tartalom from velemeny";
 			$stmt = $connection->query($sql);
 			$retData['lista'] = $stmt->fetchAll(PDO::FETCH_ASSOC);			
 			}
