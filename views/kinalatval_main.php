@@ -2,28 +2,36 @@
 
 
 <form action="<?= SITE_ROOT ?>kinalat" method="post">
-<input type="submit" name="tipus" value="tortaszelet">
+<label>Tortaszelet: </label>
+<input type="submit" name="tipus" value="tortaszelet" style="width: 120px;">
 </form>
 <form action="<?= SITE_ROOT ?>kinalat" method="post">
-<input type="submit" name="tipus" value="torta">
+<label>Torta: </label>
+<input type="submit" name="tipus" value="torta" style="width: 120px;">
 </form>
 <form action="<?= SITE_ROOT ?>kinalat" method="post">
-<input type="submit" name="tipus" value="különleges torta">
+<label>Különleges torta: </label>
+<input type="submit" name="tipus" value="különleges torta" style="width: 120px;">
 </form>
 <form action="<?= SITE_ROOT ?>kinalat" method="post">
-<input type="submit" name="tipus" value="tejszínes sütemény">
+<label>Tejszínes sütemény: </label>
+<input type="submit" name="tipus" value="tejszínes sütemény" style="width: 120px;">
 </form>
 <form action="<?= SITE_ROOT ?>kinalat" method="post">
-<input type="submit" name="tipus" value="pite">
+<label>Pite: </label>
+<input type="submit" name="tipus" value="pite" style="width: 120px;">
 </form>
 <form action="<?= SITE_ROOT ?>kinalat" method="post">
-<input type="submit" name="tipus" value="sós teasütemény">
+<label>Sós teasütemény: </label>
+<input type="submit" name="tipus" value="sós teasütemény" style="width: 120px;">
 </form>
 <form action="<?= SITE_ROOT ?>kinalat" method="post">
-<input type="submit" name="tipus" value="bejgli">
+<label>Bejgli: </label>
+<input type="submit" name="tipus" value="bejgli" style="width: 120px;">
 </form>
 <form action="<?= SITE_ROOT ?>kinalat" method="post">
-<input type="submit" name="tipus" value="vegyes">
+<label>Vegyes: </label>
+<input type="submit" name="tipus" value="vegyes" style="width: 120px;">
 </form>
 
 

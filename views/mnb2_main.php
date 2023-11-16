@@ -11,15 +11,37 @@
         </tr>
         <pre>
         <?php 
-        $ertekek = $viewData;    
+        $ertekek = $viewData;
         $tomb=array();
         $j=0;
         
         for($i=1; $i+4<count($ertekek); $i=$i+4){
+            /*if ($ertekek[$i+1]['attributes']['CURR'] == "") {
+                $ertekek[$i+1]['attributes']['CURR'] = 'Nincs';
+            }
+            if ($ertekek[$i+1]['attributes']['UNIT'] == "") {
+                $ertekek[$i+1]['attributes']['UNIT'] = 'Nincs';
+            }
+            */
             $tomb[$j]['date']=$ertekek[$i]['attributes']['DATE'];
+            /*if ($ertekek[$i+1]['value'] == "") {
+                $ertekek[$i+1]['value'] = 'Nincs';
+            }
+            if ($ertekek[$i+2]['attributes']['CURR'] == "") {
+                $ertekek[$i+2]['attributes']['CURR'] = 'Nincs';
+            }
+            if ($ertekek[$i+2]['attributes']['UNIT'] == "") {
+                $ertekek[$i+2]['attributes']['UNIT'] = 'Nincs';
+            }
+            */
             $tomb[$j]['deviza1']=$ertekek[$i+1]['value'];
+            /*if ($ertekek[$i+2]['value'] == "") {
+                $ertekek[$i+2]['value'] = 'Nincs';
+            }
+            */
             $tomb[$j]['deviza2']=$ertekek[$i+2]['value'];
             $j++;        
+            var_dump($tomb);
             ?>        
             <tr>
                 <td><?php echo ($ertekek[$i]['attributes']['DATE']);?></td>
