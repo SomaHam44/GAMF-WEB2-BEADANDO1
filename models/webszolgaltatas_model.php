@@ -26,7 +26,7 @@ class Webszolgaltatas_Model
             return $retData;
         }
         catch (SoapFault $e) {
-            var_dump($e);
+            //var_dump($e);
         }
         return $retData;
 

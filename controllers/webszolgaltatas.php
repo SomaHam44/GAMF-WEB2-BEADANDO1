@@ -8,8 +8,9 @@ class Webszolgaltatas_Controller
 		$webszolgaltatasModel = new Webszolgaltatas_Model;  //az osztályhoz tartozó modell
 		//a modellben belépteti a felhasználót
 		$retData = $webszolgaltatasModel->get_data();
-		if($retData['eredmeny'] == "ERROR")
+		/*if($retData['eredmeny'] == "ERROR")
 			echo "Hiba";
+			*/
 		//betöltjük a nézetet
 		$view = new View_Loader($this->baseName.'_main');
 		//átadjuk a lekérdezett adatokat a nézetnek
