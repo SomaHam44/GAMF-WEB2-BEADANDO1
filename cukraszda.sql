@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1:3306
--- Létrehozás ideje: 2023. Nov 13. 11:45
--- Kiszolgáló verziója: 8.0.31
--- PHP verzió: 8.0.26
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2023. Nov 22. 13:59
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,15 +27,12 @@ SET time_zone = "+00:00";
 -- Tábla szerkezet ehhez a táblához `ar`
 --
 
-DROP TABLE IF EXISTS `ar`;
-CREATE TABLE IF NOT EXISTS `ar` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `sutiid` int NOT NULL,
-  `ertek` int NOT NULL,
-  `egyseg` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `sutiid` (`sutiid`)
-) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `ar` (
+  `id` int(11) NOT NULL,
+  `sutiid` int(11) NOT NULL,
+  `ertek` int(11) NOT NULL,
+  `egyseg` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- A tábla adatainak kiíratása `ar`
@@ -257,16 +254,14 @@ INSERT INTO `ar` (`id`, `sutiid`, `ertek`, `egyseg`) VALUES
 -- Tábla szerkezet ehhez a táblához `felhasznalok`
 --
 
-DROP TABLE IF EXISTS `felhasznalok`;
-CREATE TABLE IF NOT EXISTS `felhasznalok` (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `felhasznalok` (
+  `id` int(10) UNSIGNED NOT NULL,
   `csaladi_nev` varchar(45) NOT NULL DEFAULT '',
   `utonev` varchar(45) NOT NULL DEFAULT '',
   `bejelentkezes` varchar(12) NOT NULL DEFAULT '',
   `jelszo` varchar(40) NOT NULL DEFAULT '',
-  `jogosultsag` varchar(3) NOT NULL DEFAULT '_1_',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
+  `jogosultsag` varchar(3) NOT NULL DEFAULT '_1_'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- A tábla adatainak kiíratása `felhasznalok`
@@ -293,14 +288,12 @@ INSERT INTO `felhasznalok` (`id`, `csaladi_nev`, `utonev`, `bejelentkezes`, `jel
 -- Tábla szerkezet ehhez a táblához `hir`
 --
 
-DROP TABLE IF EXISTS `hir`;
-CREATE TABLE IF NOT EXISTS `hir` (
-  `hirId` int NOT NULL AUTO_INCREMENT,
-  `idopont` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `tartalom` text COLLATE utf16_hungarian_ci NOT NULL,
-  `login` text COLLATE utf16_hungarian_ci NOT NULL,
-  PRIMARY KEY (`hirId`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
+CREATE TABLE `hir` (
+  `hirId` int(11) NOT NULL,
+  `idopont` datetime NOT NULL DEFAULT current_timestamp(),
+  `tartalom` text NOT NULL,
+  `login` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `hir`
@@ -308,7 +301,8 @@ CREATE TABLE IF NOT EXISTS `hir` (
 
 INSERT INTO `hir` (`hirId`, `idopont`, `tartalom`, `login`) VALUES
 (2, '2023-11-13 11:39:52', 'Nagyon szuper!', 'kiskanal'),
-(3, '2023-11-13 11:40:52', 'Szép!', 'kiskanal');
+(3, '2023-11-13 11:40:52', 'Szép!', 'kiskanal'),
+(4, '2023-11-15 21:47:05', 'Nagyon jó!', 'kiskanal');
 
 -- --------------------------------------------------------
 
@@ -316,15 +310,13 @@ INSERT INTO `hir` (`hirId`, `idopont`, `tartalom`, `login`) VALUES
 -- Tábla szerkezet ehhez a táblához `menu`
 --
 
-DROP TABLE IF EXISTS `menu`;
-CREATE TABLE IF NOT EXISTS `menu` (
+CREATE TABLE `menu` (
   `url` varchar(30) NOT NULL,
   `nev` varchar(30) NOT NULL,
   `szulo` varchar(30) NOT NULL,
   `jogosultsag` varchar(3) NOT NULL,
-  `sorrend` tinyint NOT NULL,
-  PRIMARY KEY (`url`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `sorrend` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- A tábla adatainak kiíratása `menu`
@@ -336,11 +328,11 @@ INSERT INTO `menu` (`url`, `nev`, `szulo`, `jogosultsag`, `sorrend`) VALUES
 ('elerhetoseg', 'Elérhetőség', '', '111', 20),
 ('kilepes', 'Kilépés', '', '011', 70),
 ('kinalatval', 'Kínálatunk', '', '011', 25),
-('linkek', 'Linkek', '', '100', 30),
 ('mnb', 'Árfolyamok', '', '011', 56),
 ('mnbe', 'Árfolyamleső', '', '011', 57),
 ('nyitolap', 'Nyitólap', '', '111', 10),
-('uzenet', 'Hírek', '', '011', 55);
+('uzenet', 'Hírek', '', '011', 55),
+('webszolgaltatas', 'Webszolgáltatás', '', '011', 62);
 
 -- --------------------------------------------------------
 
@@ -348,14 +340,12 @@ INSERT INTO `menu` (`url`, `nev`, `szulo`, `jogosultsag`, `sorrend`) VALUES
 -- Tábla szerkezet ehhez a táblához `suti`
 --
 
-DROP TABLE IF EXISTS `suti`;
-CREATE TABLE IF NOT EXISTS `suti` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `suti` (
+  `id` int(11) NOT NULL,
   `nev` varchar(100) NOT NULL,
   `tipus` varchar(100) NOT NULL,
-  `dijazott` tinyint NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8mb3;
+  `dijazott` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- A tábla adatainak kiíratása `suti`
@@ -508,14 +498,11 @@ INSERT INTO `suti` (`id`, `nev`, `tipus`, `dijazott`) VALUES
 -- Tábla szerkezet ehhez a táblához `tartalom`
 --
 
-DROP TABLE IF EXISTS `tartalom`;
-CREATE TABLE IF NOT EXISTS `tartalom` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `sutiid` int NOT NULL,
-  `mentes` varchar(5) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `sutiid` (`sutiid`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `tartalom` (
+  `id` int(11) NOT NULL,
+  `sutiid` int(11) NOT NULL,
+  `mentes` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- A tábla adatainak kiíratása `tartalom`
@@ -574,13 +561,99 @@ INSERT INTO `tartalom` (`id`, `sutiid`, `mentes`) VALUES
 -- Tábla szerkezet ehhez a táblához `velemeny`
 --
 
-DROP TABLE IF EXISTS `velemeny`;
-CREATE TABLE IF NOT EXISTS `velemeny` (
-  `velemenyId` int NOT NULL AUTO_INCREMENT,
-  `idopont` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `tartalom` text COLLATE utf16_hungarian_ci NOT NULL,
-  PRIMARY KEY (`velemenyId`)
+CREATE TABLE `velemeny` (
+  `velemenyId` int(11) NOT NULL,
+  `idopont` datetime NOT NULL DEFAULT current_timestamp(),
+  `tartalom` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
+
+--
+-- Indexek a kiírt táblákhoz
+--
+
+--
+-- A tábla indexei `ar`
+--
+ALTER TABLE `ar`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sutiid` (`sutiid`);
+
+--
+-- A tábla indexei `felhasznalok`
+--
+ALTER TABLE `felhasznalok`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `hir`
+--
+ALTER TABLE `hir`
+  ADD PRIMARY KEY (`hirId`);
+
+--
+-- A tábla indexei `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`url`);
+
+--
+-- A tábla indexei `suti`
+--
+ALTER TABLE `suti`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `tartalom`
+--
+ALTER TABLE `tartalom`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sutiid` (`sutiid`);
+
+--
+-- A tábla indexei `velemeny`
+--
+ALTER TABLE `velemeny`
+  ADD PRIMARY KEY (`velemenyId`);
+
+--
+-- A kiírt táblák AUTO_INCREMENT értéke
+--
+
+--
+-- AUTO_INCREMENT a táblához `ar`
+--
+ALTER TABLE `ar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+
+--
+-- AUTO_INCREMENT a táblához `felhasznalok`
+--
+ALTER TABLE `felhasznalok`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT a táblához `hir`
+--
+ALTER TABLE `hir`
+  MODIFY `hirId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT a táblához `suti`
+--
+ALTER TABLE `suti`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+
+--
+-- AUTO_INCREMENT a táblához `tartalom`
+--
+ALTER TABLE `tartalom`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT a táblához `velemeny`
+--
+ALTER TABLE `velemeny`
+  MODIFY `velemenyId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Megkötések a kiírt táblákhoz
