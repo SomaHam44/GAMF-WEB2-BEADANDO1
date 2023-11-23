@@ -24,10 +24,10 @@ $jsonTable=json_encode($tomb);?>
     
     var dataSet = [['Dátum', '<?php echo $ertekek[2]['attributes']['CURR']?>', '<?php echo $ertekek[3]['attributes']['CURR']?>'],
     <?php for ($i=0;$i<count($tomb)-1;$i++){?>
-    [new Date(<?php echo $tomb[$i]['date']?>), Number(<?php echo $tomb[$i]['deviza1']?>),Number(<?php echo $tomb[$i]['deviza2']?>)],
+    [new Date('<?php echo $tomb[$i]['date']?>'), Number(<?php echo $tomb[$i]['deviza1']?>),Number(<?php echo $tomb[$i]['deviza2']?>)],
     <?php }?>
-    [new Date(<?php echo $tomb[count($tomb)-1]['date']?>), Number(<?php echo $tomb[count($tomb)-1]['deviza1']?>),Number(<?php echo $tomb[count($tomb)-1]['deviza2']?>)]];         
-
+    [new Date('<?php echo $tomb[count($tomb)-1]['date']?>'), Number(<?php echo $tomb[count($tomb)-1]['deviza1']?>),Number(<?php echo $tomb[count($tomb)-1]['deviza2']?>)]];         
+console.log(dataSet);
     var data = new google.visualization.arrayToDataTable(dataSet);
     var options = {
         title:'Deviza értékek',
