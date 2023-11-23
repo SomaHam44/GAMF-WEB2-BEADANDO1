@@ -76,13 +76,13 @@ $jsonTable=json_encode($tomb);?>
     </table>    
     <div class="page-wrapper">
     <br />
-    <h2 align="center">Display Google Line Chart with JSON PHP & Mysql</h2>
+    <h2 allign="center">Display Google Line Chart with JSON PHP & Mysql</h2>
     [['Dátum', 'Deviza1', 'Deviza2'],
     <?php for ($i=0;$i<count($tomb)-1;$i++){?>
     ['<?php echo $tomb[$i]['date']?>', '<?php echo $tomb[$i]['deviza1']?>','<?php echo $tomb[$i]['deviza2']?>'],
     <?php }?>
     ['<?php echo $tomb[count($tomb)-1]['date']?>', '<?php echo $tomb[count($tomb)-1]['deviza1']?>','<?php echo $tomb[count($tomb)-1]['deviza2']?>']]
-    <div id="line_chart" style="width: 100%; height: 500px"></div>
+    <div id="line_chart" style="width: 100%; height: 500px;"></div>
     </div>
     <script type="text/javascript">
         document.write(javascript_array[0][1]);
