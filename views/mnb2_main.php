@@ -3,9 +3,9 @@ $ertekek = $viewData;
 $tomb=array();
 $j=0;
 for($i=1; $i+4<count($ertekek); $i=$i+4){
-    $tomb[$j]['date']=date("Y-m-d",strtotime(str_replace('-','/',$ertekek[$i]['attributes']['DATE'])));    
-    $tomb[$j]['deviza1']=floatval($ertekek[$i+1]['value']);      
-    $tomb[$j]['deviza2']=floatval($ertekek[$i+2]['value']);    
+    $tomb[$j]['date']=$ertekek[$i]['attributes']['DATE'];    
+    $tomb[$j]['deviza1']=$ertekek[$i+1]['value'];      
+    $tomb[$j]['deviza2']=$ertekek[$i+2]['value'];    
     $j++;
 }
 $jsonTable=json_encode($tomb);?>
@@ -19,13 +19,14 @@ $jsonTable=json_encode($tomb);?>
  google.charts.load('current', {'packages':['corechart']});
  google.charts.setOnLoadCallback(drawChart);
  
- function drawChart(){
+ 
+ function drawChart(){    
     
-    var dataSet = [['Dátum', 'Deviza1', 'Deviza2'],
+    var dataSet = [['Dátum', '<?php echo $ertekek[2]['attributes']['CURR']?>', '<?php echo $ertekek[3]['attributes']['CURR']?>'],
     <?php for ($i=0;$i<count($tomb)-1;$i++){?>
-    ['<?php echo $tomb[$i]['date']?>', '<?php echo $tomb[$i]['deviza1']?>','<?php echo $tomb[$i]['deviza2']?>'],
+    [new Date(<?php echo $tomb[$i]['date']?>), Number(<?php echo $tomb[$i]['deviza1']?>),Number(<?php echo $tomb[$i]['deviza2']?>)],
     <?php }?>
-    ['<?php echo $tomb[count($tomb)-1]['date']?>', '<?php echo $tomb[count($tomb)-1]['deviza1']?>','<?php echo $tomb[count($tomb)-1]['deviza2']?>']];         
+    [new Date(<?php echo $tomb[count($tomb)-1]['date']?>), Number(<?php echo $tomb[count($tomb)-1]['deviza1']?>),Number(<?php echo $tomb[count($tomb)-1]['deviza2']?>)]];         
 
     var data = new google.visualization.arrayToDataTable(dataSet);
     var options = {
@@ -76,17 +77,14 @@ $jsonTable=json_encode($tomb);?>
     </table>    
     <div class="page-wrapper">
     <br />
-    <h2 align="center">Display Google Line Chart with JSON PHP & Mysql</h2>
+   
     [['Dátum', 'Deviza1', 'Deviza2'],
     <?php for ($i=0;$i<count($tomb)-1;$i++){?>
     ['<?php echo $tomb[$i]['date']?>', '<?php echo $tomb[$i]['deviza1']?>','<?php echo $tomb[$i]['deviza2']?>'],
     <?php }?>
     ['<?php echo $tomb[count($tomb)-1]['date']?>', '<?php echo $tomb[count($tomb)-1]['deviza1']?>','<?php echo $tomb[count($tomb)-1]['deviza2']?>']]
     <div id="line_chart" style="width: 100%; height: 500px"></div>
-    </div>
-    <script type="text/javascript">
-        document.write(javascript_array[0][1]);
-    </script>
+    </div>    
 
 </body>   
 </html>     
