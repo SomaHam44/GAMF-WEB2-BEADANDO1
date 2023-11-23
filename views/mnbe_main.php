@@ -4,10 +4,12 @@
 <?php
 $db=count($devizak)-2; 
 echo ($db)." db";?><br><?php
+echo "<select>";
 for ($i=2;$i<$db-1;$i++){
-    echo $devizak[$i].", ";
+    echo "<option>". $devizak[$i] . "</option>";
 }
-echo $devizak[$db-2];
+echo "</select>";
+//echo $devizak[$db-2];
 ?><br>
 <p> Lekérdezhető időintervallum:</p>
 <?php
